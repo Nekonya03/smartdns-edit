@@ -2537,7 +2537,7 @@ static void _dns_server_ping_result(struct ping_host_struct *ping_host, const ch
 {
 	struct dns_request *request = userptr;
 	int may_complete = 0;
-	int threshold = 100;
+	int threshold = 10;
 	struct dns_ip_address *addr_map = NULL;
 	int last_rtt = request->ping_time;
 
@@ -2664,9 +2664,7 @@ static void _dns_server_ping_result(struct ping_host_struct *ping_host, const ch
 out:
 	/* If the ping delay is less than the threshold, the result is returned */
 	if (request->ping_time > 0) {
-		if (request->ping_time < threshold) {
-			may_complete = 1;
-		} else if (request->ping_time < (int)(get_tick_count() - request->send_tick) * 8) {
+		if (request->ping_time < (int)(get_tick_count() - request->send_tick) * 8) {
 			may_complete = 1;
 		}
 	}

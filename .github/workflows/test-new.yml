@@ -1,5 +1,6 @@
 name: Test Build (new)
-
+permissions:
+    contents: write
 on:
   push:
     branches:
@@ -38,8 +39,6 @@ jobs:
         goarch: [x86_64, powerpc64le, mipsel, mips, i686, aarch64, armv7l]
       fail-fast: false
     runs-on: ubuntu-latest
-    permissions:
-        contents: write
     env:
       GOARCH: ${{ matrix.goarch }}
     steps:
@@ -138,8 +137,6 @@ jobs:
       matrix:
         goarch: [luci, luci-compat]
     runs-on: ubuntu-latest
-    permissions:
-        contents: write
     env:
       GOARCH: ${{ matrix.goarch }}
     steps:

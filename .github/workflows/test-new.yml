@@ -38,6 +38,8 @@ jobs:
         goarch: [x86_64, powerpc64le, mipsel, mips, i686, aarch64, armv7l]
       fail-fast: false
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
     env:
       GOARCH: ${{ matrix.goarch }}
     steps:

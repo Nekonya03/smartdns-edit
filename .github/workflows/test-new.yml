@@ -138,6 +138,8 @@ jobs:
       matrix:
         goarch: [luci, luci-compat]
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
     env:
       GOARCH: ${{ matrix.goarch }}
     steps:
